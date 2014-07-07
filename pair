@@ -1,0 +1,84 @@
+#!/bin/sh
+#
+# by Erik Osheim
+#
+# to use this script to pair with other users you will need to:
+#
+#   1. (install tmux.)
+#   2. groupadd pairing
+#   3. (add pairing users to the "pairing" group.)
+#   4. mkdir /var/run/pairs
+#   5. chgrp pairing /var/run/pairs
+#   6. chmod 2770 /var/run/pairs
+#
+# these commands will probably need to be run as a privileged user
+# (e.g. root). commands #1 and #3 are outside the scope of this
+# comment (they are specific to your operating system). here is a
+# description of what the others do:
+#
+#   2. create a group called "pairing" (any name is ok)
+#   4. create a folder where all "pairing sessions" will live
+#   5. make sure the "pairing" group owns the folder
+#   6. make sure the folder has the right permissions
+#
+# regarding #6, the right permissions ensure that "pairing" group
+# members can read/write to the directory, and that new files created
+# in the directoy will be owned by the "pairing" group. this allows
+# different users to connect to each others pairs.
+#
+# if you've installed tmux to a non-standard location, change the TMUX
+# variable to the absolute path to the "tmux" executable.
+#
+# if you want to use a different directory, change the DIR variable to
+# the absolute path of the directory you want to use.
+#
+# the help message contains a comment about using CTRL-q as the meta
+# sequence, which is intended to work with my .tmux.conf file. you can
+# change that if necessary.
+
+usage() {
+    echo "usage: pair [ ls | start NAME | join NAME ]"
+    echo ""
+    echo "  ls          list all current sessions"
+    echo "  start NAME  start a new sessions called NAME"
+    echo "  join NAME   join a session called NAME"
+    echo ""
+    echo "  sessions names can use letters, numbers, and underscore"
+    echo "  meta sequence is CTRL-Q"
+    echo ""
+    exit 1
+}
+
+TMUX="tmux"
+DIR="/var/run/pairs"
+
+list() {
+    for NAME in `find "$DIR" -type s`; do
+        "$TMUX" -S "$NAME" list-sessions 2>/dev/null;
+    done
+}
+
+isok() {
+    if [ -z "$1" ]; then usage; fi
+    echo "$1" | egrep -q '^[0-9A-Za-z_]+$'
+    if [ $? -ne 0 ]; then echo "invalid name $1"; exit 1; fi
+}
+
+start() {
+    isok "$1"
+    "$TMUX" -S "$DIR/$1" new -s "$1"
+}
+
+join() {
+    isok "$1"
+    "$TMUX" -S "$DIR/$1" attach -t "$1"
+}
+
+if [ $# -lt 1 ]; then usage; fi
+
+case "$1" in
+    ls) list;;
+    start) start "$2";;
+    join) join "$2";;
+    *) usage;;
+esac
