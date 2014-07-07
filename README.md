@@ -93,8 +93,10 @@ On Linux you can do this via `groupadd pairing`.
 
 #### 3. Add users to the *pairing* group
 
-You'll need to add each pairing user to the group you set up. On Linux
-this can be accomplished by editing `/etc/group`.
+You'll need to add each pairing user to the group you set up.
+
+On Linux this can be accomplished by editing `/etc/group`. You can
+also run `usermod -a -G pairing betty` to add *betty* to *pairing*.
 
 #### 4. Create *pairs* directory with appropriate permissions
 
