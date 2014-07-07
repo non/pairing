@@ -5,30 +5,33 @@
 ### Background
 
 I've always enjoyed pair programming. It's not for everyone but it
-definitely helps keep me honest about the code I'm writing, and ofte
+definitely helps keep me honest about the code I'm writing, and often
 makes me vastly more productive than I would be on my own.
 Unfortunately, it can be hard to pair program when your collaborators
 live in another city (or country).
 
 This project provides a script called [pair](pair) that makes it
-really easy to use `tmux` to share virtual terminals with one (or
-more) collaborators. My experience is that sharing a tmux session
-works much better than trying to do other kinds of screensharing
-(Hangouts, VNC, etc), and makes it easier for "either side" to pick up
-a shared session later to continue hacking.
+really easy to use [Tmux](http://tmux.sourceforge.net/) to share
+virtual terminals with one (or more) collaborators. My experience is
+that sharing a tmux session works much better than trying to do other
+kinds of screensharing (Hangouts, VNC, etc), and makes it easier for
+"either side" to pick up a shared session later to continue
+hacking. Using this script plus a phone call, Skype, Hangouts,
+etc. provides me with a really good pairing experience.
 
-In order to use this, you should have a machine that all participants
-can connect to via [SSH](http://www.openssh.com/) (or some other
-mechanism). All participants must have shell access, and the ability
-to run `tmux`.
+In order to use this script, you will need a machine that all
+participants can connect to via [SSH](http://www.openssh.com/) (or
+some other mechanism). It could be a VPS or one of the participants'
+computers. All participants must have shell access, and the ability to
+run `tmux`.
 
 ### Usage
 
 There are three basic usages:
 
- * `pair ls` See what (if any) pairs are available to join.
- * `pair start joe` Start a pair named "joe".
- * `pair join joe` Join an existing pair named "joe".
+ * `pair ls` See which pairs are available to join.
+ * `pair start joe` Start a pair named *joe*.
+ * `pair join joe` Join an existing pair named *joe*.
 
 Tmux will use the smallest dimensions that support all users'
 terminals, so it's a good idea to try to agree on general font/window
@@ -39,7 +42,9 @@ This assumes that you have put the `pair` command somewhere that your
 shell can find (e.g. `/usr/local/bin` or possibly `~/bin`).
 
 I will usually leave a pair running all the time, and then use Skype,
-Google hangouts, or even a phone call to be able to talk as we hack.
+Google hangouts, or even a phone call to be able to talk as we
+hack. Leaving the pair running means either participant can easily
+refer back to it.
 
 It's worth noting that unlike "traditional" pair programming, both
 developers will be able to type into the terminal (and developers can
@@ -80,7 +85,7 @@ so. Here are some example commands:
 
 (Feel free to submit a PR with instructions other operating systems.)
 
-#### 2. Create a "pairing" group
+#### 2. Create a *pairing* group
 
 You will need to create a group that all users who are allowed to pair
 should belong to. In the examples I've called it *pairing* but really
@@ -88,12 +93,12 @@ any name is fine as long as it is consistent.
 
 On Linux you can do this via `groupadd pairing`.
 
-#### 3. Add users to the "pairing" group
+#### 3. Add users to the *pairing* group
 
 You'll need to add each pairing user to the group you set up. On Linux
 this can be accomplished by running editing `/etc/group`.
 
-#### 4. Create "pairs" directory with appropriate permissions
+#### 4. Create *pairs* directory with appropriate permissions
 
 We need to create an actual location to store the pair files. The
 default location is `/var/run/pairs` -- you can change this by editing
@@ -111,6 +116,11 @@ These commands create the directory, change the group owner to the
 *pairing* group, and set the permission to ensure all group members
 can create (and read) files in the directory. If you used a different
 location, or group name, modify the commands accordingly.
+
+#### 5. Install the pair script
+
+The location you choose should be in every users' `PATH`. A good
+choice might be the `/usr/local/bin` directory.
 
 That's it!
 
@@ -145,8 +155,8 @@ important key binding it works much better than other choices, like
 
 ### Copyright and License
 
-All code is available to you under the MIT license, available at
-http://opensource.org/licenses/mit-license.php and also in the COPYING
-file.
+All code is available to you under the
+[MIT license](http://opensource.org/licenses/mit-license.php), which
+can also be found in the [COPYING](COPYING) file.
 
 Copyright Erik Osheim, 2014.
