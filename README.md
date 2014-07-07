@@ -94,7 +94,7 @@ On Linux you can do this via `groupadd pairing`.
 #### 3. Add users to the *pairing* group
 
 You'll need to add each pairing user to the group you set up. On Linux
-this can be accomplished by running editing `/etc/group`.
+this can be accomplished by editing `/etc/group`.
 
 #### 4. Create *pairs* directory with appropriate permissions
 
