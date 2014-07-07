@@ -59,14 +59,25 @@ even [Ed](https://www.gnu.org/fun/jokes/ed-msg.txt). Members of a pair
 will need to agree on an editor, although it's possible to trade-off
 through the day.
 
+The script should work on an *nix OS. Unfortunately I have no idea how
+(or if) one could get it working on Windows.
+
 ### Installation
 
 The comments in [pair](pair) provide basic installation instructions,
 which I will expand on here. You will probably need to be a privileged
 user (e.g. root) to run these commands, or use `sudo`.
 
-The script should work on an *nix OS. Unfortunately I have no idea how
-(or if) one could get it working on Windows.
+If you are using Linux, want to use the default locations (and trust
+me to get it right) you can just run the [install.sh](install.sh)
+script I've provided:
+
+```
+sudo ./install.sh fred daphne velma shaggy scooby
+```
+
+That command would add all the members of the "Mystery Gang" to the
+*pairing* group.
 
 #### 1. Install tmux
 
