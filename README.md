@@ -119,7 +119,7 @@ location, or group name, modify the commands accordingly.
 
 #### 5. Install the pair script
 
-The location you choose should be in every users' `PATH`. A good
+The location you choose should be in every user's `PATH`. A good
 choice might be the `/usr/local/bin` directory.
 
 That's it!
