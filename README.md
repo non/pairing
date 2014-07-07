@@ -23,6 +23,22 @@ some other mechanism). It could be a VPS or one of the participants'
 computers. All participants must have shell access, and the ability to
 run `tmux`.
 
+### Warning!
+
+Starting a pair on your account and giving people remote access is a
+bit like handing someone your laptop with an open shell: anything your
+user can do they can do. You should only do this with people you
+trust!
+
+If you really need to pair with someone you don't trust, a good
+strategy might be to create a separate user (without privileges like
+sudo) and use that account while pairing. Even then, you are still
+giving someone local access to your machine, so be careful!
+
+You can close a pair by closing all the tmux windows within it. It's
+impossible for someone else to *start* a pair under your account--they
+can only join a pair you have already created.
+
 ### Usage
 
 There are three basic usages:
