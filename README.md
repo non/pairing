@@ -1,7 +1,5 @@
 ## pairing
 
-"Easily use tmux to collaborate with distant friends!"
-
 ### Background
 
 I've always enjoyed pair programming. It's not for everyone but it
