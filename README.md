@@ -140,16 +140,16 @@ configuration to disable
 [XON/XOFF](http://en.wikipedia.org/wiki/Software_flow_control)
 (e.g. adding `stty -ixon` to `$HOME/.bashrc`).
 
-I think everyone should do this anyway, since having your terminal
-hang inexplicably when you hit `Ctrl-q` is almost never useful to
-anyone (and almost no one I work with understands what has
+To expand on #4: I think everyone should do this anyway, since having
+your terminal hang inexplicably when you hit `Ctrl-q` is almost never
+useful to anyone (and almost no one I work with understands what has
 happened). But it's true that using `Ctrl-q` as meta requires users to
 recover from this situation by using `Ctrl-q q` instead of just
 `Ctrl-q`.
 
-Since no other tools/editors that I know of use `Ctrl-Q` as an
+Since no other tools/editors that I know of use `Ctrl-q` as an
 important key binding it works much better than other choices, like
-`Ctrl-A`, `Ctrl-B`, etc.
+`Ctrl-a`, `Ctrl-b`, etc.
 
 ### Copyright and License
 
