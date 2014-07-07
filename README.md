@@ -143,11 +143,13 @@ configuration to disable
 (e.g. adding `stty -ixon` to `$HOME/.bashrc`).
 
 To expand on #4: I think everyone should do this anyway, since having
-your terminal hang inexplicably when you hit `Ctrl-q` is almost never
-useful to anyone (and almost no one I work with understands what has
-happened). But it's true that using `Ctrl-q` as meta requires users to
-recover from this situation by using `Ctrl-q q` instead of just
-`Ctrl-q`.
+your terminal hang inexplicably when you hit `Ctrl-s` is almost never
+useful to anyone. In my experience, when this happens almost no one
+knows what is going on (or that they need to fix it by hitting
+`Ctrl-q`). But it's true that using `Ctrl-q` as meta requires users to
+recover from this situation (if it occurs) by using `Ctrl-q q` instead
+of just `Ctrl-q`. The `stty -ixon` command disables this behavior, so
+`Ctrl-s` won't do this.
 
 Since no other tools/editors that I know of use `Ctrl-q` as an
 important key binding it works much better than other choices, like
