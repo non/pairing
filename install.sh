@@ -35,20 +35,20 @@ if [ $# -eq 0 ]; then usage; fi
 # if the group doesn't exist, create it
 grep -q "^$GROUP:" /etc/group
 if [ $? -ne 0 ]; then
-    echo groupadd "$GROUP"
+    groupadd "$GROUP"
 fi
 
 # add each user to the group
 while [ $# -ne 0 ]; do
-    echo usermod -a -G "$GROUP" "$1" 
+    usermod -a -G "$GROUP" "$1" 
     shift
 done
 
 # set up the pairing directory's permissions
 if [ ! -d "$DIR" ]; then
-    echo mkdir "$DIR"
-    echo chgrp -R "$GROUP" "$DIR"
-    echo chmod 2770 "$DIR"
+    mkdir "$DIR"
+    chgrp -R "$GROUP" "$DIR"
+    chmod 2770 "$DIR"
 fi
 
 # copy the executable and set it up
